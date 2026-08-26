@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#071b2a">
+	<title>KYA | Know Before You Act</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<script src="https://unpkg.com/lucide@latest"></script>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="noise"></div>
+	<header class="site-header">
+		<a class="brand" href="#home" aria-label="KYA home"><span class="brand-mark">K</span><span>KYA</span><small>TECH TITANS</small></a>
+		<nav class="main-nav" aria-label="Main navigation">
+			<a class="active" href="#analyze">Live analysis</a><a href="#how-it-works">How it works</a><a href="#evaluation">Evaluation</a><a href="#team">Team</a>
+		</nav>
+		<button class="header-cta" data-scroll="analyze">Open workspace <i data-lucide="arrow-up-right"></i></button>
+	</header>
+
+	<main>
+		<section class="hero" id="home">
+			<div class="hero-copy">
+				<div class="eyebrow"><span class="pulse-dot"></span> SAFETY LAYER FOR AI DECISIONS</div>
+				<h1>Know before<br><em>you act.</em></h1>
+				<p class="hero-text">KYA adds a moment of intelligence between an AI prediction and the real-world action it could trigger.</p>
+				<div class="hero-actions"><button class="primary-button" data-scroll="analyze">Run a live check <i data-lucide="arrow-right"></i></button><a href="#how-it-works" class="text-link">See the method <i data-lucide="move-down"></i></a></div>
+			</div>
+			<div class="hero-orbit" aria-hidden="true"><div class="orbit-ring ring-one"></div><div class="orbit-ring ring-two"></div><div class="orbit-core"><span>AI</span><b>+</b><span>HUMAN</span></div><div class="orbit-label label-top">PREDICTION</div><div class="orbit-label label-bottom">DECISION</div></div>
+			<div class="hero-foot"><span>01 / 04</span><span class="hero-line"></span><span>RELIABILITY, MADE VISIBLE</span></div>
+		</section>
+
+		<section class="workspace-section" id="analyze">
+			<div class="section-heading"><div><div class="eyebrow">LIVE WORKSPACE / IMAGE CLASSIFICATION</div><h2>Put a prediction<br><em>through its paces.</em></h2></div><div class="live-status"><span class="pulse-dot"></span> MODEL ONLINE <span class="status-divider"></span> DEMO MODE</div></div>
+			<div class="workspace-grid">
+				<div class="input-panel panel">
+					<div class="panel-top"><span class="mono-label">01 / INPUT</span><span class="file-type">PNG · JPG · WEBP</span></div>
+					<div class="drop-zone" id="drop-zone"><input id="image-input" type="file" accept="image/png,image/jpeg,image/webp"><div class="upload-icon"><i data-lucide="scan-line"></i></div><h3>Drop an image here</h3><p>or <label for="image-input">browse your files</label></p><span class="drop-note">For this demo, try a digit, object, or intentionally noisy image.</span></div>
+					<div class="sample-row"><span class="mono-label">QUICK SAMPLE</span><button class="sample-button selected" data-sample="digit">Digit 7 <span>MNIST-like</span></button><button class="sample-button" data-sample="object">Object <span>familiar</span></button><button class="sample-button" data-sample="noise">Noise <span>unknown</span></button></div>
+					<div class="preview-wrap hidden" id="preview-wrap"><canvas id="preview-canvas" width="440" height="260"></canvas><button class="remove-image" id="remove-image" aria-label="Remove image"><i data-lucide="x"></i></button></div>
+					<button class="analyze-button" id="analyze-button">Analyze input <i data-lucide="arrow-up-right"></i></button>
+				</div>
+				<div class="result-panel panel">
+					<div class="panel-top"><span class="mono-label">02 / KYA GATE</span><span class="run-id" id="run-id">RUN #KYA-00482</span></div>
+					<div class="result-head"><div><span class="result-kicker">RECOMMENDED ACTION</span><h3 id="decision-title">ACT</h3></div><div class="score-circle" id="score-circle"><strong id="ars-value">0.78</strong><span>ARS</span></div></div>
+					<div class="decision-bar"><span id="decision-marker"></span><div class="bar-track"><i></i><i></i></div><div class="bar-labels"><span>STOP <b>&lt; 0.40</b></span><span>REVIEW <b>0.40—0.75</b></span><span>ACT <b>≥ 0.75</b></span></div></div>
+					<div class="signal-list">
+						<div class="signal-row"><span class="signal-name"><i data-lucide="crosshair"></i> Confidence <b>(C)</b></span><strong id="confidence-value">0.99</strong><span class="signal-track"><i id="confidence-bar"></i></span></div>
+						<div class="signal-row"><span class="signal-name"><i data-lucide="fingerprint"></i> Familiarity <b>(F)</b></span><strong id="familiarity-value">0.99</strong><span class="signal-track"><i id="familiarity-bar"></i></span></div>
+						<div class="signal-row"><span class="signal-name"><i data-lucide="waves"></i> Uncertainty <b>(U)</b></span><strong id="uncertainty-value">0.01</strong><span class="signal-track inverse"><i id="uncertainty-bar"></i></span></div>
+						<div class="signal-row"><span class="signal-name"><i data-lucide="aperture"></i> Input quality <b>(Q)</b></span><strong id="quality-value">0.99</strong><span class="signal-track"><i id="quality-bar"></i></span></div>
+					</div>
+					  <div class="prediction-row"><div><span class="result-kicker">MODEL PREDICTION</span><strong id="prediction-value">Seven</strong></div><span class="prediction-confidence" id="prediction-confidence">99% confidence</span></div>
+				</div>
+			</div>
+			<div class="explain-grid"><div class="explanation panel"><div class="panel-top"><span class="mono-label">03 / WHY THIS DECISION</span><i data-lucide="sparkles"></i></div><p id="explanation-text">The input looks like a familiar, high-quality sample. Confidence and familiarity are strong, while uncertainty is low. The action clears the safety threshold.</p><div class="formula"><span>ARS = [0.3C + 0.3F + 0.2Q - 0.2U] x (1 - R)</span><strong id="formula-result">= [0.297 + 0.297 + 0.198 - 0.002] x 0.99 = 0.78</strong></div></div><div class="review-card panel"><div class="review-top"><span class="mono-label">HUMAN-IN-THE-LOOP</span><span class="queue-count" id="queue-count">03 IN QUEUE</span></div><h3 id="review-title">No intervention needed</h3><p id="review-copy">High-readiness predictions can proceed automatically. Lower-scoring inputs are routed here for a human decision.</p><button class="secondary-button" id="review-button">Open review queue <i data-lucide="arrow-up-right"></i></button></div></div>
+		</section>
+
+		<section class="method-section" id="how-it-works"><div class="section-heading compact"><div><div class="eyebrow">THE KYA METHOD</div><h2>Five signals.<br><em>One responsible action.</em></h2></div><p class="section-intro">A transparent decision layer that makes model reliability legible before automation takes over.</p></div><div class="method-grid"><article><span>01</span><i data-lucide="target"></i><h3>Confidence</h3><p>How certain is the model about its top prediction?</p></article><article><span>02</span><i data-lucide="fingerprint"></i><h3>Familiarity</h3><p>Does this input resemble what the model learned from?</p></article><article><span>03</span><i data-lucide="cloud-rain"></i><h3>Uncertainty</h3><p>How much ambiguity remains beneath the output?</p></article><article><span>04</span><i data-lucide="image"></i><h3>Input quality</h3><p>Is the signal clean enough to support a decision?</p></article><article class="risk-card"><span>05</span><i data-lucide="shield-alert"></i><h3>Risk multiplier</h3><p>How costly would a wrong action be here?</p></article></div></section>
+
+		<section class="evaluation-section" id="evaluation"><div class="section-heading compact"><div><div class="eyebrow">EVALUATION / MODEL HEALTH</div><h2>Trust, measured<br><em>in the open.</em></h2></div><span class="date-stamp">LAST 24 HOURS · DEMO DATA</span></div><div class="metrics-grid"><div class="metric metric-large"><span class="metric-label">DECISIONS PROCESSED</span><strong>1,284</strong><small><b>+18.4%</b> vs. previous period</small><div class="sparkline"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div><div class="metric"><span class="metric-label">ACT RATE</span><strong>62.7<span>%</span></strong><small class="good">Within expected range</small></div><div class="metric"><span class="metric-label">REVIEW RATE</span><strong>24.1<span>%</span></strong><small>Human oversight active</small></div><div class="metric"><span class="metric-label">STOP RATE</span><strong>13.2<span>%</span></strong><small class="warning">Inputs flagged for risk</small></div></div><div class="evaluation-note"><i data-lucide="info"></i><span>Metrics shown are from the KYA demo evaluation set: 10,000 MNIST-like inputs, including 20% deliberately corrupted samples.</span><span class="mono-label">10K EVAL SET</span></div></section>
+
+		<section class="team-section" id="team"><div class="team-stamp">TT<br><span>2026</span></div><div><div class="eyebrow">BUILT BY TECH TITANS</div><h2>Good AI knows<br><em>when to pause.</em></h2><p>We are building practical safety layers for a world where AI predictions increasingly become real-world decisions.</p></div><div class="team-meta"><span class="mono-label">ROUND 03 / AI INNOVATION CHALLENGE</span><strong>KNOW BEFORE YOU ACT</strong><span>© TECH TITANS · 2026</span></div></section>
+	</main>
+	<div class="toast" id="toast"><i data-lucide="check-circle-2"></i><span>Input analyzed successfully</span></div>
+	<script src="style.js"></script>
+	<script>if (window.lucide) lucide.createIcons();</script>
+</body>
+</html>
